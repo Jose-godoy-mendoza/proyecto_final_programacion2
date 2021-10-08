@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/web/Producto.jsp</file>
-            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/src/java/Controlador/controlador.java</file>
-            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/src/java/Modelo/Marcas.java</file>
-            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/src/java/Modelo/Producto.java</file>
-            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/web/Marcas.jsp</file>
+            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/src/java/Controlador/controlador_ventas.java</file>
+            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/web/Maestro_ventas.jsp</file>
+            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/src/java/Modelo/Ventas_Detalle.java</file>
+            <file>file:/D:/Codigos/Proyectos%20de%20JAVA/proyecto_final_programacion2/src/java/Modelo/Ventas.java</file>
         </group>
     </open-files>
 </project-private>

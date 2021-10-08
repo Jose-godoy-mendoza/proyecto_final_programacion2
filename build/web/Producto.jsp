@@ -101,6 +101,16 @@
                             <div class="d-grid gap-2 col-4 mx-auto">
                                 <button name="btn_eliminar_productos" id="btn_eliminar_productos" class="btn btn-danger" value="eliminar_producto">Eliminar Producto</button>
                             </div>
+                            <center>
+                            <div class="list-group">
+                                    <br> <br>
+                                    <a href="Producto.jsp" class="list-group-item list-group-item-action active" aria-current="true">
+                                      Formulario Productos
+                                    </a>
+                                    <a href="Marcas.jsp" class="list-group-item list-group-item-action">Formulario Marcas</a>
+                                    <a href="index.jsp" class="list-group-item list-group-item-action">Inicio</a>
+                                  </div>
+                            </center>
                         </div>
                     </div>
             </form>         
@@ -141,9 +151,9 @@
             </table>
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         
         <script type="text/javascript">
             $("#tbl_productos").on("click","tr td", function(evt)

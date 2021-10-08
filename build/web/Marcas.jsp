@@ -50,17 +50,34 @@
                             <input type="text" class="form-control" name="txt_id_marca" id="txt_id_marca" value="0" readonly>
                             <label for="lbl_producto"><b>Marca</b></label>
                             <input type="text" class="form-control" name="txt_marca" id="txt_marca" placeholder="Nombre de la marca" aria-label="Nombre de la Marca">
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <br> <br>
+                            <br> 
+                            
+
+                            <div class="row g-3">
+                            <div class="d-grid gap-2 col-4 mx-auto">
+                                <br>
                                 <button name="btn_agregar_marcas" id="btn_agregar_marcas" class="btn btn-success" value="agregar_marca">Agregar Marca</button>
                             </div>
-                            <div class="d-grid gap-2 col-6 mx-auto">
+                            <div class="d-grid gap-2 col-4 mx-auto">
                                 <br>
-                                    <button name="btn_modificar_marcas" id="btn_modificar_marcas" class="btn btn-primary" value="modificar_marca">Modificar Marca</button>
+                                <button name="btn_modificar_marcas" id="btn_modificar_marcas" class="btn btn-primary" value="modificar_marca">Modificar Marca</button>
                             </div>
-                            <div class="d-grid gap-2 col-6 mx-auto">
+                            <div class="d-grid gap-2 col-4 mx-auto">
                                 <br>
-                                    <button name="btn_eliminar_marcas" id="btn_eliminar_marcas" class="btn btn-danger" value="eliminar_marca">Eliminar Marca</button>
+                                <button name="btn_eliminar_marcas" id="btn_eliminar_marcas" class="btn btn-danger" value="eliminar_marca">Eliminar Marca</button>
+                            </div>
+                            
+                                <center>
+                                <div class="list-group" >
+                                    <br> <br>
+                                    <a href="Marcas.jsp" class="list-group-item list-group-item-action active" aria-current="true">
+                                      Formulario Marcas
+                                    </a>
+                                    <a href="Producto.jsp" class="list-group-item list-group-item-action">Formulario Productos</a>
+                                    <a href="index.jsp" class="list-group-item list-group-item-action">Inicio</a>
+                                </div>
+                                </center>
+                            </div>
                             </div>
                         </div>
                     </div>

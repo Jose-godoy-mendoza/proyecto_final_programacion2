@@ -8,6 +8,10 @@
         <servlet-name>controlador_marcas</servlet-name>
         <servlet-class>Controlador.controlador_marcas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controlador_ventas</servlet-name>
+        <servlet-class>Controlador.controlador_ventas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlador</servlet-name>
         <url-pattern>/controlador</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>controlador_marcas</servlet-name>
         <url-pattern>/controlador_marcas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlador_ventas</servlet-name>
+        <url-pattern>/controlador_ventas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

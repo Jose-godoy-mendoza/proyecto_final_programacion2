@@ -21,7 +21,7 @@
             <div class="list-group">
                 <a href="Producto.jsp" class="list-group-item list-group-item-action">Productos</a>
                 <a href="Marcas.jsp" class="list-group-item list-group-item-action">Marcas</a>
-                <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                <a href="Maestro_ventas.jsp" class="list-group-item list-group-item-action">maestro ventas</a>
                 <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
               </div>
         </div>

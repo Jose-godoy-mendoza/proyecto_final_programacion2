@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -100,6 +101,28 @@ public class Producto {
         this.precio_venta = precio_venta;
     }
     
+    public HashMap mostrar_producto()
+    {
+        HashMap<String, String> drop_producto=new HashMap();
+        try
+        {
+            String codigo_sql="select idproducto as id, producto from productos";
+            cn= new Conexion();
+            cn.abrir_conexion();
+            ResultSet consulta=cn.conexionBD.createStatement().executeQuery(codigo_sql);
+            while(consulta.next())
+            {
+                drop_producto.put(consulta.getString("id"), consulta.getString("producto"));
+            }
+            
+            cn.cerrar_conexion();
+        }catch(Exception ex)
+        {
+            
+        }
+        
+        return drop_producto;
+    }
     
     
     public int eliminar(int id)
