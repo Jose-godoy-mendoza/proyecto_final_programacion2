@@ -12,6 +12,22 @@
         <servlet-name>controlador_ventas</servlet-name>
         <servlet-class>Controlador.controlador_ventas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>src_cliente</servlet-name>
+        <servlet-class>Controlador.src_cliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>src_empleado</servlet-name>
+        <servlet-class>Controlador.src_empleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>src_proveedor</servlet-name>
+        <servlet-class>Controlador.src_proveedor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>src_puesto</servlet-name>
+        <servlet-class>Controlador.src_puesto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlador</servlet-name>
         <url-pattern>/controlador</url-pattern>
@@ -23,6 +39,22 @@
     <servlet-mapping>
         <servlet-name>controlador_ventas</servlet-name>
         <url-pattern>/controlador_ventas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>src_cliente</servlet-name>
+        <url-pattern>/src_cliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>src_empleado</servlet-name>
+        <url-pattern>/src_empleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>src_proveedor</servlet-name>
+        <url-pattern>/src_proveedor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>src_puesto</servlet-name>
+        <url-pattern>/src_puesto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

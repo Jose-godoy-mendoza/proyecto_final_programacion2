@@ -147,14 +147,14 @@ public class Empleado extends Persona {
         }
     }
 
-    public DefaultTableModel leer_empleado() {
+    public DefaultTableModel leer3() {
         DefaultTableModel tabla = new DefaultTableModel();
         String uno[] = {"Masculino", "Femenino"};
         String elegir;
         try {
             cn = new Conexion();
             cn.abrir_conexion();
-            String query = "select idEmpleado as id, m.Nombres, m.Apellidos, m.Direccion, m.Telefono,m.DPI,m.Genero,m.Fecha_nacimiento,m.Fecha_inicio_laborales,m.Fecha_ingreso, P.Puesto, P.Idpuesto from empleados as m, puestos as P where m.id_Puesto=P.Idpuesto;";
+            String query = "select idEmpleado as id, m.Nombres, m.Apellidos, m.Direccion, m.Telefono,m.DPI,m.Genero,m.Fecha_nacimiento,m.Fecha_inicio_labores,m.Fechaingreso, P.Puesto, P.Idpuesto from empleados as m, puestos as P where m.idPuesto=P.Idpuesto;";
             ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
             String encabezado[] = {"Id", "Nombres", "Apellidos", "Direccion", "Telefono", "Dpi", "Genero", "Nacimiento", "Fecha Contrato", "Fecha Ingreso", "Puesto", "id_puesto"};
             tabla.setColumnIdentifiers(encabezado);
@@ -175,8 +175,8 @@ public class Empleado extends Persona {
                 datos[5] = consulta.getString("DPI");
                 datos[6] = elegir;//consulta.getString("Genero");//
                 datos[7] = consulta.getString("Fecha_nacimiento");
-                datos[8] = consulta.getString("Fecha_inicio_laborales");
-                datos[9] = consulta.getString("Fecha_ingreso");
+                datos[8] = consulta.getString("Fecha_inicio_labores");
+                datos[9] = consulta.getString("Fechaingreso");
                 datos[10] = consulta.getString("Puesto");
                 datos[11] = consulta.getString("Idpuesto");
 

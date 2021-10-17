@@ -290,6 +290,36 @@ public class Ventas_Detalle {
         return existencias;
     }
     
+    
+    
+    
+    public double prueba_precio(String id_p)
+    {
+            //int id= Integer.valueOf(id_p);
+            double precio_producto=0;
+            try
+            {
+                cn=new Conexion();
+                cn.abrir_conexion();
+                String obtenerprecio_unitario="select precio_venta from productos where idproducto=?";
+                PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(obtenerprecio_unitario);
+                parametro.setString(1, id_p);
+                ResultSet consulta=parametro.executeQuery();
+                while(consulta.next())
+                {
+                    precio_producto=consulta.getDouble(1);
+                }
+                cn.cerrar_conexion();
+            }catch(Exception ex)
+            {
+                
+            }
+            return precio_producto;
+    }
+    
+    
+    
+    
     public double precio_unitario(int id)
     {
             double precio_producto=0;

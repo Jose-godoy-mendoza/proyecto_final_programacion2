@@ -62,8 +62,8 @@
                             </div>
                         </div>
                     </div>
-                    <label for="lbl_descripcion"><b>Imagen</b></label>
-                    <input type="text" name="txt_imagen" id="txt_imagen" class="form-control" placeholder="Link de la imagen del producto">
+                    <label for="lbl_imagenes"><b>Imagen</b></label>
+                    <input type="file" name="txt_imagen" id="txt_imagen" class="form-control" placeholder="Link de la imagen del producto">
                     <br>
                     <div class="row">
                         <div class="row g-6">
@@ -137,7 +137,7 @@
                         out.println("<tr data-id="+tabla.getValueAt(t, 0)+" data-id_producto="+tabla.getValueAt(t, 9)+">");
                         out.println("<td>"+ tabla.getValueAt(t, 1)+"</td>");
                         out.println("<td>"+ tabla.getValueAt(t, 2)+"</td>");
-                        out.println("<td>"+ tabla.getValueAt(t, 3)+"</td>");
+                        out.println("<td> <img src="+ tabla.getValueAt(t, 3)+" alt='imagen' width='100' height='100'></td>");
                         out.println("<td>"+ tabla.getValueAt(t, 4)+"</td>");
                         out.println("<td>"+ tabla.getValueAt(t, 5)+"</td>");
                         out.println("<td>"+ tabla.getValueAt(t, 6)+"</td>");

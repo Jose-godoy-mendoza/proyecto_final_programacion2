@@ -4,6 +4,7 @@
     Author     : joseg
 --%>
 
+<%@page import="Modelo.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,8 +23,14 @@
                 <a href="Producto.jsp" class="list-group-item list-group-item-action">Productos</a>
                 <a href="Marcas.jsp" class="list-group-item list-group-item-action">Marcas</a>
                 <a href="Maestro_ventas.jsp" class="list-group-item list-group-item-action">maestro ventas</a>
+                <a href="index_puesto.jsp" class="list-group-item list-group-item-action">Puestos</a>
                 <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
               </div>
+            <%
+                Producto producto= new Producto();
+                String imagen=producto.obtener_imagen();
+            %>
+            <img src="<%= imagen %>" alt="imagen">
         </div>
     </body>
 </html>

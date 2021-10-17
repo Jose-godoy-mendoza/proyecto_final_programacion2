@@ -85,7 +85,12 @@
                                     String precio_producto;
                                     int id_producto=5;//Integer.valueOf(request.getParameter("drop_producto"));
                                     precio_unitario=venta_d.precio_unitario(id_producto);
-                                    precio_producto=String.valueOf(precio_unitario);      
+                                    precio_producto=String.valueOf(precio_unitario);     
+                                    /*double precio_unitario=1;
+                                    String precio_producto="100";
+                                    String id_producto=request.getParameter("drop_producto");
+                                    precio_unitario=venta_d.prueba_precio(id_producto);
+                                    precio_producto=String.valueOf(precio_unitario); */
                               %>
                           <div class="col-md-6">
                               <label for="lbl_cantidad"><b>Precio Unitario</b></label>
@@ -119,7 +124,7 @@
                             </div>
                             <div class="col-md-6">
                                 <br>
-                                    <a href="Cliente.jsp" class="btn btn-primary">Clientes</a>
+                                    <a href="index_cliente.jsp" class="btn btn-primary">Clientes</a>
                             </div>
                         </div>
                     </div>
@@ -143,7 +148,7 @@
                             </div>
                             <div class="col-md-6">
                                 <br>
-                                <a href="Empleado.jsp" class="btn btn-primary">Empleados</a>
+                                <a href="index_empleado.jsp" class="btn btn-primary">Empleados</a>
                             </div>
                         </div>
                     </div>

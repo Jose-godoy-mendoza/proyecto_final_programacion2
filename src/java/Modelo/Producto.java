@@ -101,6 +101,35 @@ public class Producto {
         this.precio_venta = precio_venta;
     }
     
+    
+    public String obtener_imagen()
+    {
+        String imagen="";
+        int id=22;
+        try
+        {
+            cn=new Conexion();
+            String consulta="select imagen from productos where idproducto=?;";
+            cn.abrir_conexion();
+            PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(consulta);
+            parametro.setInt(1, id);
+            
+            ResultSet peticion=parametro.executeQuery();
+            while(peticion.next())
+            {
+                imagen="Imagenes/"+peticion.getString(1);
+            }
+            cn.cerrar_conexion();
+        }catch(Exception ex)
+        {
+            
+        }
+        
+        
+        return imagen;
+    }
+
+    
     public HashMap mostrar_producto()
     {
         HashMap<String, String> drop_producto=new HashMap();
@@ -161,7 +190,7 @@ public class Producto {
             parametro=(PreparedStatement) cn.conexionBD.prepareStatement(codigo_sql);
             parametro.setString(1, getProducto());
             parametro.setString(2, getDescripcion());
-            parametro.setString(3, getImagen());
+            parametro.setString(3, "Imagenes/"+getImagen());
             //parametro.setString(4, getFecha_ingreso());
             parametro.setString(4, fecha);
             parametro.setInt(5,    getIdmarca());
@@ -178,7 +207,7 @@ public class Producto {
         }
         
         return devolver;
-    } 
+    }  
     
    
    public int agregar()
@@ -194,7 +223,7 @@ public class Producto {
             parametro=(PreparedStatement) cn.conexionBD.prepareStatement(codigo_sql);
             parametro.setString(1, getProducto());
             parametro.setString(2, getDescripcion());
-            parametro.setString(3, getImagen());
+            parametro.setString(3, "Imagenes/"+getImagen());
             //parametro.setString(4, getFecha_ingreso());
             parametro.setString(4, fecha);
             parametro.setInt(5,    getIdmarca());

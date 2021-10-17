@@ -194,7 +194,7 @@ Conexion cn;
         try {
             cn = new Conexion();
             cn.abrir_conexion();
-            String query = "select idCliente as id, Nombres,Apellidos,NIT,Genero,Telefono,Correo_electronico,Fecha_ingreso from clientes;";
+            String query = "select idCliente as id, Nombres,Apellidos,NIT,Genero,Telefono,Correo_electronico,Fechaingreso from clientes;";
             ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
             String encabezado[] = {"Id", "Nombres", "Apellidos", "Nit","Genero", "Telefono", "Correo","Fecha Ingreso"};
             tabla.setColumnIdentifiers(encabezado);
@@ -214,7 +214,7 @@ Conexion cn;
                 datos[4] = elegir;
                 datos[5] = consulta.getString("Telefono");
                 datos[6] = consulta.getString("Correo_electronico");
-                datos[7] = consulta.getString("Fecha_ingreso");
+                datos[7] = consulta.getString("Fechaingreso");
          
                 tabla.addRow(datos);
             }
