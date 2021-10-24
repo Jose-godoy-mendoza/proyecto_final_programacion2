@@ -4,10 +4,10 @@
     Author     : joseg
 --%>
 
-<%@page import="Modelo.Puesto"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="javax.swing.table.DefaultTableModel"%>
-<%@page import="Modelo.Empleado"%>
+<%@page import="Modelo.Puesto" %>
+<%@page import="Modelo.Empleado" %>
+<%@page import="java.util.HashMap" %>
+<%@page import="javax.swing.table.DefaultTableModel" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,30 +19,69 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
 
         <link rel="stylesheet" href="css/estilo_empleado.css">
+         <link href="css/estilo_menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-          <form  action="index.jsp">
-            <input class="btn_form" type="submit" value="Menu" />
-       
+        <div id="header">
+            <ul class="nav">
+                <img src="imagenes/onitech.png" alt=""/>
+                 <li><a href="index_inicio_principal.jsp">Inicio</a></li>
+                <li><a href="index_producto.jsp">Productos</a>
+                    <ul>
+                        <li><a href="index_marcas.jsp">Marcas</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Ventas</a>
+                    <ul>
+                        <li><a href="index_cliente.jsp">Clientes</a></li>
+                        <li><a href="index_empleado.jsp">Empleados</a>
+                            <ul>
+                                <li><a href="index_puesto.jsp">Puestos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="">Compras</a>
+                    <ul>
+                        <li><a href="index_prooveedores.jsp">Proveedores</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Reportes</a></li>
+                  <li>
+                    <%
+       response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+       if(session.getAttribute("txtUsuario")==null&&session.getAttribute("nombre")==null){
+           response.sendRedirect("index.html");
+       }  %>
+                    <a > 
+                        <form action="sr_cerrar_sesion" >
+                            <input class="cerrar_sesion" type="submit"  value="Cerrar Sesion">
+                        </form>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <br>
+
         <button type="button" class="btn_form" data-toggle="modal" data-target="#modal_empleado" onclick="Limpiar()">
             Formulario
         </button>
-          </form>
-        <div class="container-fluid p-3 my-3 bg-light  text-black">
+
+        <div class="container-fluid p-3 my-3  text-black">
 
             <div class="formulario_titulo">
-                <h5>Formulario Empleados :3</h5>
+                <h5>Formulario Empleados </h5>
             </div>
             <br>
             <div class="modal fade"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_empleado" role="dialog">
                 <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-body  formula_modal">
+                    <div class="modal-content formula_modal">
+                        <div class="modal-body  ">
+
                             <form  action="index_puesto.jsp">
                                 <input class="enlaze_puesto" type="submit" value="Puestos" />
                             </form>
@@ -148,9 +187,9 @@
                                 <div class=" formulario__grupo-btn-enviar">
                                     <button  name="btn_agregar" id="btn_agregar" value="agregar"    class="formulario__btn " >Agregar</button>
                                     <button  name="btn_modificar" id="btn_modificar" value="modificar" class="formulario__btn1" >Modificar</button>
-                                    <button  name="btn_eliminar" id="btn_eliminar" value="eliminar" class="formulario__btn2"  onclick ="javascript:if (!confirm('¿Desea Eliminar'))
-                                                return false"  >Eliminar</button>
+                                    <button  name="btn_2" id="btn_2" onclick="return confirmar2();" value="eliminar"class="formulario__btn2" > Eliminar </button>
                                 </div>
+                                <button name="btn_eliminar" id="btn_eliminar"  value="eliminar"class="btn_falso" > </button>
                                 <br>
                             </form>
                             <div class="modal-footer">
@@ -204,6 +243,7 @@
             </table>
 
             <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script type = "text/javascript " src = "js/formulario_empleado.js" > </script> 
         </div>
     </body>

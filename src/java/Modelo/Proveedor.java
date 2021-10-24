@@ -71,7 +71,7 @@ public class Proveedor extends Persona {
         try {
             cn = new Conexion();
             cn.abrir_conexion();
-            String query = "select idProveedore as id,Proveedor,Nit,Direccion,Telefono from proveedores;";
+            String query = "select idProveedor as id,Proveedor,Nit,Direccion,Telefono from proveedores;";
             ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
             String encabezado[] = {"Id", "Proveedor", "Nit", "Direccion", "Telefono"};
             tabla.setColumnIdentifiers(encabezado);

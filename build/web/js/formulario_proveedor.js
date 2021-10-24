@@ -1,10 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
@@ -42,8 +35,8 @@ const expresiones = {
     apellido: /^[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}[ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}$/,
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^[+]{1}[0-9]{1,4}[ ][0-9]{7,14}$/, // 7 a 14 numeros.
-     nit: /^[0-9]{6}[-][0-9]{1}$/,
-   direccion: /^[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}[ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}$/,
+    nit: /^[0-9]{6}[-][0-9]{1}$/,
+    direccion: /^[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,60}$/,
     dpi: /^[0-9]{4}[ ][0-9]{5}[ ][0-9]{4}$/
 };
 
@@ -82,6 +75,7 @@ const validarCampo = (expresion, input, campo) => {
         document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
         campos[campo] = true;
+         
     } else {
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
@@ -89,6 +83,7 @@ const validarCampo = (expresion, input, campo) => {
         document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
         campos[campo] = false;
+       
     }
 };
 
@@ -138,42 +133,74 @@ let validar2 = () => {
 let obtener_datos = () => {
     let error = validar();
     if (error) {
-        swal({
-            title: "Error!!",
-            text: "Llene los campos correctamente!!",
-            icon: "error",
-            button: "Aceptar",
-
-            showConfirmButton: false
-        });
-
-
+        error44();
     } else {
-        swal({
-            title: "Excelente!!",
-            text: "Registro Agregado Correctamente!!",
-
-            icon: "success",
-            timer: 10000,
-
-            showConfirmButton: false
-        });
+        correcto();
     }
 };
 
 let obtener_datos2 = () => {
     let error2 = validar2();
     if (error2) {
-        swal("Error!!", "Llene los campos correctamente", "error");
+        error44();
     } else {
-        swal({
-            title: "Excelente!!",
-            text: "Registro Agregado Correctamente!!",
-            icon: "success",
-            timer: 90000,
-            showConfirmButton: false
-        });
+        correcto();
     }
-};     
+};
+
+function error44() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error!!',
+        html: '<h5 style=color:red><br><b>Debe Llenar los campos correctamente</b></h5>',
+        // confirmButtonColor: '#a52a2a'
+        showConfirmButton: true,
+        confirmButtonColor: '#ff0000'
+    });
+}
+
+function correcto() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Excelente!!',
+        html: '<h5 style=color:lime><br><b>Datos Ingresados Correctamente</b></h5>',
+        //   background: "#1e2122",
+        showConfirmButton: false
+
+    });
+}
 btn_agregar.addEventListener('click', obtener_datos);
 btn_modificar.addEventListener('click', obtener_datos2);
+function confirmar2(evt) {
+     
+    Swal.fire({
+        title: 'Eliminar',
+        text: "Desea eliminar el registro?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value === true) {
+            Swal.fire({
+                title: 'Eliminado',
+                html: '<h5 style=color:lime><br><b>Datos Eliminados Correctamente!!</b></h5>',
+                icon: 'success',
+                showConfirmButton: false
+            });
+
+            $("#btn_eliminar").click();
+        } else {
+            Swal.fire({
+                confirmButtonColor: '#d33',
+                icon: 'error',
+                title: 'Cancelado',
+                text: 'Datos No Eliminados'
+               
+            });
+        }
+    });
+    return false;
+}

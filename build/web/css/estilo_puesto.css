@@ -1,23 +1,10 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 13/10/2021, 22:58:04
-    Author     : joseg
-*/
-
 *{
     box-sizing: border-box;
 }
 
 body{
     font-family: 'Roboto', sans-serif;
-    border:springgreen solid 18px;
-    border-style:double ;
-    background: rgb(242,247,248);
-    background: linear-gradient(30deg, rgba(242,247,248,1) 0%, rgba(250,251,251,1) 35%, rgba(244,227,201,1) 100%);
+
 }
 
 main {
@@ -31,15 +18,16 @@ main {
     justify-items: center;
     flex-direction:row;
     text-align: center;
-    background-color: springgreen;
+
     font-family:Georgia, 'Times New Roman', Times, serif;
-    color:black;
+    color:  #20b2aa;
 
 }
 
 .formula_modal{
-     background: rgb(209,212,213);
-    background: linear-gradient(30deg, rgba(209,212,213,1) 0%, rgba(163,180,181,1) 35%, rgba(8,237,246,1) 100%);
+    background: rgb(210,214,214);
+    background: linear-gradient(90deg, rgba(210,214,214,1) 0%, rgba(227,237,237,0.9086937399471507) 50%, rgba(156,155,153,1) 100%);
+    opacity:0.90 !important;
 
 }
 
@@ -56,6 +44,7 @@ main {
     cursor: pointer;
     font-style:oblique;
     font-size:20px;
+    font-weight: bold;
 
 }
 
@@ -67,7 +56,7 @@ main {
 .formulario__input {
 
     width: 100%;
-    background:#f5f5f5;
+    background:white;
     border:silver solid 2px;
     border-radius: 5px ;
     height: 45px;
@@ -90,6 +79,8 @@ main {
     font-size: 12px;
     margin-bottom: 0;
     display: none;
+    color:#0000ff;
+    font-weight: bold;
 }
 
 .formulario__input-error-activo {
@@ -206,7 +197,7 @@ main {
 
 }
 .formula_puesto{
-    background-color: khaki;
+    background-color:#dcdcdc;
     font-size: 19px;
     text-align: center;
 }
@@ -231,8 +222,7 @@ main {
 .btn_form{
     height: 50px;
     width: 10%;
-    background: rgb(31,254,33);
-    background: linear-gradient(30deg, rgba(31,254,33,1) 0%, rgba(72,243,120,1) 35%, rgba(41,241,125,1) 100%);
+    background:  #20b2aa;
     color: white;
     font-weight: bold;
     font-size: 17px;
@@ -241,24 +231,23 @@ main {
     transition: .1s ease all;
 }
 .contador_lbl{
-    background: rgb(31,254,33);
-    background: linear-gradient(30deg, rgba(31,254,33,1) 0%, rgba(72,243,120,1) 35%, rgba(41,241,125,1) 100%);
-    color:black;
+    background:  #20b2aa;
+    color:white;
     font-weight: bold;
-    position: absolute; 
-    width: 230px;
-    height: 30px;
-    line-height: 50px;
+    width: 170px;
+    height: 45px;
+    line-height: 45px;
     font-size: inherit;
-    left: 91%; 
-    top: 44px; 
+    left: 99%; 
+    /*    top: 120px; */
     transform: translate(-100%, 0); 
-    text-align: center; 
+    text-align: center;
+    top:100px;
+    position:absolute;
 }
-
 .titulos{
-   text-align: center;
-   font-size: 20px;
+    text-align: center;
+    font-size: 20px;
 }
 .enlaze_empleado{
     height: 50px;
@@ -273,7 +262,6 @@ main {
     cursor: pointer;
     transition: .1s ease all;
 }
-
 .btn_falso{
-   visibility: hidden; 
+    visibility: hidden; 
 }

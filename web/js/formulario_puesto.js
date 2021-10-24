@@ -1,17 +1,15 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
+
+//var test = 'Bienvenido';
+//$("#txt_puesto").val('Hola');
+var uno='que honda';
+document.getElementsByName("#txt_puesto").values(uno);
+
 function Limpiar() {
     $("#txt_id").val(0);
     $("#txt_puesto").val('');
 }
-
 
 $('#tbl_puestos').on('click', 'tr td', function (evt) {
     var target, id, puesto;
@@ -35,6 +33,8 @@ const validarFormulario = (e) => {
         case "txt_puesto":
             validarCampo(expresiones.nombre, e.target, 'txt_puesto');
             break;
+            
+         
     }
 };
 const validarCampo = (expresion, input, campo) => {
@@ -45,13 +45,14 @@ const validarCampo = (expresion, input, campo) => {
         document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
         campos[campo] = true;
+         
     } else {
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
         document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
         document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
-        campos[campo] = false;
+        campos[campo] = false;      
     }
 };
 inputs.forEach((input) => {
@@ -110,9 +111,10 @@ function error44() {
     Swal.fire({
         icon: 'error',
         title: 'Error!!',
-       html: '<h5 style=color:red><br><b>Debe Llenar los campos correctamente</b></h5>',
-       // confirmButtonColor: '#a52a2a'
-       showConfirmButton: false 
+        html: '<h5 style=color:red><br><b>Debe Llenar los campos correctamente</b></h5>',
+        // confirmButtonColor: '#a52a2a'
+        showConfirmButton: true,
+        confirmButtonColor: '#ff0000'
     });
 }
 
@@ -121,14 +123,13 @@ function correcto() {
         icon: 'success',
         title: 'Excelente!!',
         html: '<h5 style=color:lime><br><b>Datos Ingresados Correctamente</b></h5>',
-      //   background: "#1e2122",
-        showConfirmButton: false 
-      //  confirmButtonColor: '#00ff00'
+        //   background: "#1e2122",
+        showConfirmButton: false
+
     });
 }
 btn_agregar.addEventListener('click', obtener_datos);
 btn_modificar.addEventListener('click', obtener_datos2);
-//btn_eliminar.addEventListener('click', obtener_datos2);
 function doss() {
     //   var mensaje;
     var opcion = confirm("Desea Eliminar");
@@ -146,46 +147,60 @@ function doss() {
 
 //$('#confirm').click(function () {
 function confirmar2(evt) {
-    var r;
-  
+     
     Swal.fire({
         title: 'Eliminar',
-        text: "Desea Eliminar el registro?",
+        text: "Desea eliminar el registro?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'si, eliminar',
+        confirmButtonText: 'Si, eliminar',
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.value === true) {
-            Swal.fire(
-                    'Eliminado',
-                    'Datos Eliminados Correctamente',
-                    'success'
-                  );
-  
-$("#btn_eliminar").click();
+            Swal.fire({
+                title: 'Eliminado',
+                html: '<h5 style=color:lime><br><b>Datos Eliminados Correctamente!!"</b></h5>',
+                icon: 'success',
+                showConfirmButton: false
+            });
+
+            $("#btn_eliminar").click();
         } else {
- }      
+            Swal.fire({
+                confirmButtonColor: '#d33',
+                icon: 'error',
+                title: 'Cancelado',
+                text: 'Datos No Eliminados'
+               
+            });
+        }
     });
     return false;
 }
-//});
-function tres() {
-alertify.confirm("Desea Eliminar?", function(e){
- if(e){
-return true;
-alertify.alert("Eliminado");
 
- }else{
-alertify.alert("Cancelado");    
-return false;
- }
-  
-});
+
+function doss() {
+    var opcion = confirm("Desea Eliminar");
+    if (opcion === true) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
+function cuatro(evt) {
 
 
-//if (confirm('Are you sure you want to delete?')) form.action='/Config?pg=FIBiller&amp;cmd=delete'; else confirmar2();
+    alertify.confirm("Desea Eliminar?", function (e) {
+        if (e) {
+            alert("Verdadero");
+        }
+        if (e === false) {
+            alert("falso");
+        }
+
+    });
+    evt.preventDefault();
+}

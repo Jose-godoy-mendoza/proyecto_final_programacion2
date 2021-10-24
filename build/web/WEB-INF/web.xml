@@ -28,6 +28,22 @@
         <servlet-name>src_puesto</servlet-name>
         <servlet-class>Controlador.src_puesto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sr_cerrar_sesion</servlet-name>
+        <servlet-class>Controlador.sr_cerrar_sesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sr_guardar_login</servlet-name>
+        <servlet-class>Controlador.sr_guardar_login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sr_iniciar_sesion</servlet-name>
+        <servlet-class>Controlador.sr_iniciar_sesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>src_marca</servlet-name>
+        <servlet-class>Controlador.src_marca</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlador</servlet-name>
         <url-pattern>/controlador</url-pattern>
@@ -55,6 +71,22 @@
     <servlet-mapping>
         <servlet-name>src_puesto</servlet-name>
         <url-pattern>/src_puesto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_cerrar_sesion</servlet-name>
+        <url-pattern>/sr_cerrar_sesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_guardar_login</servlet-name>
+        <url-pattern>/sr_guardar_login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_iniciar_sesion</servlet-name>
+        <url-pattern>/sr_iniciar_sesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>src_marca</servlet-name>
+        <url-pattern>/src_marca</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
