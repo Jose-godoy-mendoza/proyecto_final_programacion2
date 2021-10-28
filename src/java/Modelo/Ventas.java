@@ -5,8 +5,10 @@
  */
 package Modelo;
 
+import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
@@ -149,5 +151,25 @@ public class Ventas {
         
         return retornar;
     }
-    
+    public int eliminar(int id)
+    {
+        int devolver=0;
+        try
+        {
+            PreparedStatement parametro;
+            String codigo_sql="delete from db_punto_venta.ventas where idventa=?";
+            cn = new Conexion();
+            cn.abrir_conexion();
+            parametro=(PreparedStatement) cn.conexionBD.prepareStatement(codigo_sql);
+            parametro.setInt(1, id);
+            
+            devolver=parametro.executeUpdate();
+            cn.cerrar_conexion();
+        }catch(HeadlessException | SQLException ex)
+        {
+            System.out.println("error........"+ex.getMessage());
+        }
+        
+        return devolver;
+    }  
 }

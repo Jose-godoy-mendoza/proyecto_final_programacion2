@@ -1,7 +1,7 @@
 function bienvenido(){
 Swal.fire({
     title: "Bienvenido",
-    imageUrl: 'imagenes/exito.gif',
+    imageUrl: 'Imagenes/exito.gif',
     imageWidth: 400,
     imageHeight: 386,
     imageAlt: 'Custom image',
@@ -14,7 +14,7 @@ Swal.fire({
     },*/
     backdrop: `
     rgba(0,0,128,0.5)
-    url("imagenes/nyancat.gif")
+    url("Imagenes/nyancat.gif")
     left top
     no-repeat
   `
@@ -33,7 +33,7 @@ function creado(){
 Swal.fire({
     title: "Exito",
     text: 'Usuario creado correctamente',
-    imageUrl: 'imagenes/exito2.gif',
+    imageUrl: 'Imagenes/exito2.gif',
     imageWidth: 496,
     imageHeight: 278,
     imageAlt: 'Custom image',

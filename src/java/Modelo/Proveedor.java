@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,6 +38,30 @@ public class Proveedor extends Persona {
         this.nit = nit;
     }
 
+    
+    public HashMap mostrar_proveedor()
+    {
+        HashMap<String, String> drop_marca = new HashMap();
+        try
+        {
+            String codigo_sql="Select idproveedor as id, proveedor from proveedores order by id";
+            cn = new Conexion();
+            cn.abrir_conexion();
+            ResultSet consulta=cn.conexionBD.createStatement().executeQuery(codigo_sql);
+            while(consulta.next())
+            {
+                drop_marca.put(consulta.getString("id"), consulta.getString("proveedor"));
+            }
+            
+            cn.cerrar_conexion();    
+        }catch(SQLException ex)
+        {
+         System.out.println(ex.getMessage());   
+        }
+        
+        return drop_marca;
+    }
+    
     @Override
     public int agregar() {
         int retorno;
@@ -99,7 +124,7 @@ public class Proveedor extends Persona {
         {
             try {
                 PreparedStatement parametro;
-                String query = "update proveedores set Proveedor=?,Nit=?,Direccion=?,Telefono=? where idProveedore=?;";
+                String query = "update proveedores set Proveedor=?,Nit=?,Direccion=?,Telefono=? where idProveedor=?;";
                 cn = new Conexion();
                 cn.abrir_conexion();
                 parametro = (PreparedStatement) cn.conexionBD.prepareStatement(query);
@@ -127,7 +152,7 @@ public class Proveedor extends Persona {
         {
             try {
                 PreparedStatement parametro;
-                String query = "delete from proveedores where idProveedore=?;";
+                String query = "delete from proveedores where idProveedor=?;";
                 cn = new Conexion();
                 cn.abrir_conexion();
                 parametro = (PreparedStatement) cn.conexionBD.prepareStatement(query);

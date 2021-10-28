@@ -53,7 +53,7 @@ public class controlador_ventas extends HttpServlet {
                         {
                             ventas_detalle.agregar();
 
-                            response.sendRedirect("index.jsp");
+                            response.sendRedirect("Maestro_ventas.jsp");
                         }
                         else
                         {
@@ -79,7 +79,7 @@ public class controlador_ventas extends HttpServlet {
                     if (ventas_detalle.modificar()>0)
                     {
                         venta.modificar(Integer.valueOf(request.getParameter("txt_id_venta_detalle")));
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("Maestro_ventas.jsp");
                     }
                     else
                     {
@@ -100,10 +100,15 @@ public class controlador_ventas extends HttpServlet {
             {
                 int cantidad_de_ventas= ventas_detalle.cantidad_de_ventasdetalle();
                 ventas_detalle.modificacion_antiguoidprod(cantidad_de_ventas);
+                int idven=venta.id_venta(Integer.valueOf(request.getParameter("txt_id_venta_detalle")));
                 if (ventas_detalle.eliminar()>0)
                 {
-                    
-                    response.sendRedirect("index.jsp");
+                    //int despues=venta.id_venta(Integer.valueOf(request.getParameter("txt_id_venta_detalle")));
+                    //if(despues==0)
+                    //{
+                        venta.eliminar(idven);
+                    //}
+                    response.sendRedirect("Maestro_ventas.jsp");
                 }
                 else
                 {

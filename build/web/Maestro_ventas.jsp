@@ -14,6 +14,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="Modelo.Producto"%>
 <%@page import="Controlador.controlador"%>
+<%@page import="Controlador.sr_cerrar_sesion"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
 
 
@@ -23,9 +24,52 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link href="css/estilo_menu.css" rel="stylesheet" type="text/css"/>
         <title>Maestro Venta Detalle</title>
     </head>
     <body>
+        
+        <div id="header">
+            <ul class="nav">
+                <img src="imagenes/onitech.png" alt=""/>
+                <li><a href="index_inicio_principal.jsp">Inicio</a></li>
+                <li><a href="index_producto.jsp">Productos</a>
+                    <ul>
+                        <li><a href="index_marcas.jsp">Marcas</a></li>
+                    </ul>
+                </li>
+                <li><a href="Maestro_ventas.jsp">Ventas</a>
+                    <ul>
+                        <li><a href="index_cliente.jsp">Clientes</a></li>
+                        <li><a href="index_empleado.jsp">Empleados</a>
+                            <ul>
+                                <li><a href="index_puesto.jsp">Puestos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="Maestro_compras.jsp">Compras</a>
+                    <ul>
+                        <li><a href="index_prooveedores.jsp">Proveedores</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Reportes</a></li>
+                <li >
+                    <%
+       response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+       if(session.getAttribute("txtUsuario")==null&&session.getAttribute("nombre")==null){
+           response.sendRedirect("index.html");
+       }
+                    %>
+                    <a > 
+                        <form action="sr_cerrar_sesion" >
+                            <input class="cerrar_sesion" type="submit"  value="Cerrar Sesion">
+                        </form>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
         
         <div class="container">
             <form action="controlador_ventas" method="post" class="form-group" >
@@ -33,9 +77,11 @@
                 
                 <%
                     Ventas_Detalle venta_d=  new Ventas_Detalle();
-                    int idventa=0;
+                    int idventa=0, idventa2=0;
+                    idventa2 =venta_d.idventamax();
                     idventa=venta_d.idventamax()+1;
                     String id_venta=String.valueOf(idventa);
+                    String id_venta2=String.valueOf(idventa2);
                 %>
                 
                 <div class="row">
@@ -92,9 +138,9 @@
                                     precio_unitario=venta_d.prueba_precio(id_producto);
                                     precio_producto=String.valueOf(precio_unitario); */
                               %>
-                          <div class="col-md-6">
+                          <div class="col-md-4">
                               <label for="lbl_cantidad"><b>Precio Unitario</b></label>
-                              <input type="number" class="form-control" name="txt_precio_unitario" id="txt_precio_unitario" value="<%= precio_producto%>" readonly>
+                              <input type="number" class="form-control" name="txt_precio_unitario" id="txt_precio_unitario" value="0" readonly>
                           </div>
 
                         </div>
@@ -180,17 +226,15 @@
                             <br>
                             <div class="d-grid gap-2 col-4 mx-auto">
                                 <button name="btn_eliminar_venta" id="btn_eliminar_venta" class="btn btn-danger" value="eliminar_venta">Eliminar Venta</button>
+                            </div>                            
+                        </div>
+                    </div>
+                              <br>
+                    <div class="row">
+                        <div class="row g-6">
+                            <div class="d-grid gap-2 col-4 mx-auto">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_empleado" onclick="limpiar()">Agregar Otro Producto</button>
                             </div>
-                            <center>
-                <%--             <div class="list-group">
-                                    <br> <br>
-                                    <a href="Maestro_ventas.jsp" class="list-group-item list-group-item-action active" aria-current="true">
-                                      Formulario Ventas
-                                    </a>
-                                    <a href="Marcas.jsp" class="list-group-item list-group-item-action">Formulario Clientes</a>
-                                    <a href="index.jsp" class="list-group-item list-group-item-action">Fromulario Empleados</a>
-                                  </div> --%>
-                            </center>
                         </div>
                     </div>
             </form>         
@@ -237,10 +281,58 @@
                 </tbody>
             </table>
         </div>
+                
         
-        <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+        
+        <div class="container">
+            <div class="modal fade" id="modal_empleado" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">       
+                        <div class="modal-body">
+
+                            <form action="controlador_ventas2" method="post" class="form-group">
+                                <label form="lbl_id_venta"><b>ID</b></label>
+                                <input type="text" name="txt_id_venta" id="txt_id_venta" class="form-control" value="<%= id_venta2 %>" readonly="">
+
+                                <div class="row">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                          <label for="lbl_producto2"><b>Producto</b></label>
+                                            <select name="drop_producto2" id="drop_producto2" class="form-select">
+                                            <%
+
+                                                HashMap<String,String> mostrar2= producto.mostrar_producto();
+                                                for(String i:mostrar.keySet())
+                                                {
+                                                    out.println("<option value="+i+">"+mostrar2.get(i)+ "</option>");
+                                                }
+                                            %>
+                                        </select>
+                                      </div>
+                                        <div class="col-md-6"> 
+                                            <label for="lbl_cantidad2"><b>Cantidad</b></label>
+                                            <input type="number" class="form-control" name="txt_cantidad2" id="txt_cantidad2">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <br>
+                                <button name="btn_agregar_nuevo_prod" id="btn_agregar_nuevo_prod" value="Agregar_nuevo_prod" class="btn btn-primary ">Agregar</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                            </form>
+                                    
+                        </div>
+                    </div>
+                                    
+                </div>
+            </div>
+        </div>        
+                
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         
         <script type="text/javascript">
             $("#tbl_ventas_detalle").on("click","tr td", function(evt)
@@ -275,33 +367,13 @@
                 $("#drop_empleado").val(id_empleado);
                 $("#txt_fecha_facturacion").val(fechafacturacion); //
                 //$("#drop_marcas").val(id);
+                $("#txt_id_venta").val(nofact);
             });
-            /*$("#tbl_ventas_detalle").on("click","tr td", function(evt)
+            $("#txt_id_venta").on("click", function(evt)
             {
-                var target, id, id_venta, producto, descripcion, imagen, precio_costo, precio_venta, existencia, fecha_ingreso, marca;
-                target=$(evt.target);
-                id=target.parent().data("id");
-                id_venta=target.parent().data("id_producto");
-                producto=target.parent("tr").find("td").eq(0).html();
-                descripcion=target.parent("tr").find("td").eq(1).html();
-                imagen=target.parent("tr").find("td").eq(2).html();
-                precio_costo=target.parent("tr").find("td").eq(3).html();
-                precio_venta=target.parent("tr").find("td").eq(4).html();
-                existencia=target.parent("tr").find("td").eq(5).html();
-                fecha_ingreso=target.parent("tr").find("td").eq(6).html();
-                //marca=target.parent("tr").find("td").eq(7).html();
-                $("#txt_id_producto").val(id);
-                $("#txt_producto").val(producto);
-                $("#txt_descripcion").val(descripcion);
-                $("#txt_imagen").val(imagen);
-                $("#txt_costo").val(precio_costo);
-                $("#txt_venta").val(precio_venta);
-                $("#txt_existencia").val(existencia);
-                $("#txt_fecha_ingreso").val(fecha_ingreso);
-                $("#drop_marcas").val(id_producto);
                 
-            });*/
-            
+                $("#txt_id_venta").val(<%=id_venta2%>);
+            });
         </script>
     </body>
 </html>

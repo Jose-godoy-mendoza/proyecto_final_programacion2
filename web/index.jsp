@@ -18,7 +18,7 @@
     </head>
     <body onpageshow="cargarLogin()">
         <nav class="menu" id="menu">
-            <img src="imagenes/umg.png" alt="logo" class="logo" align="left">
+            <img src="Imagenes/umg.png" alt="logo" class="logo" align="left">
             <ul>
                 <li><a href="#" onclick="cargarLogin()">Iniciar Sesión</a></li>
                 <li><a href="#" onclick="cargarValidarUsuario()">Registrarse</a></li>

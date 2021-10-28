@@ -44,6 +44,30 @@
         <servlet-name>src_marca</servlet-name>
         <servlet-class>Controlador.src_marca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controlador_compras</servlet-name>
+        <servlet-class>Controlador.controlador_compras</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>prod44</servlet-name>
+        <servlet-class>Controlador.prod44</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mod1</servlet-name>
+        <servlet-class>Controlador.mod1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar</servlet-name>
+        <servlet-class>Controlador.Eliminar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controlador_ventas2</servlet-name>
+        <servlet-class>Controlador.controlador_ventas2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controlador_compras2</servlet-name>
+        <servlet-class>Controlador.controlador_compras2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlador</servlet-name>
         <url-pattern>/controlador</url-pattern>
@@ -87,6 +111,30 @@
     <servlet-mapping>
         <servlet-name>src_marca</servlet-name>
         <url-pattern>/src_marca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlador_compras</servlet-name>
+        <url-pattern>/controlador_compras</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>prod44</servlet-name>
+        <url-pattern>/prod44</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mod1</servlet-name>
+        <url-pattern>/mod1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar</servlet-name>
+        <url-pattern>/Eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlador_ventas2</servlet-name>
+        <url-pattern>/controlador_ventas2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlador_compras2</servlet-name>
+        <url-pattern>/controlador_compras2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

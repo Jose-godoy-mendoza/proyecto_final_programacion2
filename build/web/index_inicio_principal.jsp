@@ -15,7 +15,7 @@
     <body>
         <div id="header">
             <ul class="nav">
-                <img src="imagenes/onitech.png" alt=""/>
+                <img src="Imagenes/onitech.png" alt=""/>
                 <li><a href="index_inicio_principal.jsp">Inicio</a></li>
                 
                 <li><a href="index_producto.jsp">Productos</a>
@@ -23,7 +23,7 @@
                         <li><a href="index_marcas.jsp">Marcas</a></li>
                     </ul>
                 </li>
-                <li><a href="">Ventas</a>
+                <li><a href="Maestro_ventas.jsp">Ventas</a>
                     <ul>
                         <li><a href="index_cliente.jsp">Clientes</a></li>
                         <li><a href="index_empleado.jsp">Empleados</a>
@@ -33,7 +33,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="">Compras</a>
+                <li><a href="Maestro_compras.jsp">Compras</a>
                     <ul>
                         <li><a href="index_prooveedores.jsp">Proveedores</a></li>
                     </ul>
@@ -57,7 +57,7 @@
    
          <div class="contenedor">
             <div class="flex22"></div>
-          <img class="Imagen_pol" src="imagenes/kung1.jpg">  
+          <img class="Imagen_pol" src="Imagenes/kung1.jpg">  
           <div class="flex23">
               </div>
          </div>

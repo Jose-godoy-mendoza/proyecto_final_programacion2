@@ -33,7 +33,7 @@
                         <li><a href="index_marcas.jsp">Marcas</a></li>
                     </ul>
                 </li>
-                <li><a href="">Ventas</a>
+                <li><a href="Maestro_ventas.jsp">Ventas</a>
                     <ul>
                         <li><a href="index_cliente.jsp">Clientes</a></li>
                         <li><a href="index_empleado.jsp">Empleados</a>
@@ -43,7 +43,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="">Compras</a>
+                <li><a href="Maestro_compras.jsp">Compras</a>
                     <ul>
                         <li><a href="index_prooveedores.jsp">Proveedores</a></li>
                     </ul>

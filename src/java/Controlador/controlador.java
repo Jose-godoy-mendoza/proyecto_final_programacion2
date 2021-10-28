@@ -44,7 +44,7 @@ public class controlador extends HttpServlet {
             //out.println("<h1>Servlet controlador at " + request.getContextPath() + "</h1>");
             
             //FORMULARIO PRODUCTO
-            producto= new Producto(request.getParameter("txt_producto"),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),request.getParameter("txt_fecha_ingreso"),Integer.valueOf(request.getParameter("drop_marcas")),Integer.valueOf(request.getParameter("txt_existencia")),Double.valueOf(request.getParameter("txt_costo")),Double.valueOf(request.getParameter("txt_venta")));
+            producto= new Producto(request.getParameter("txt_producto"),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),request.getParameter("txt_fecha_ingreso"),Integer.valueOf(request.getParameter("drop_marcas")),Integer.valueOf(request.getParameter("txt_existencia")),Double.valueOf(request.getParameter("txt_costo")),Double.valueOf(request.getParameter("txt_venta")),0);
             if("agregar_producto".equals(request.getParameter("btn_agregar_productos")))
             {
                 if (producto.agregar()>0)
@@ -63,7 +63,7 @@ public class controlador extends HttpServlet {
             else if("modificar_producto".equals(request.getParameter("btn_modificar_productos")))
             {
                 int id=Integer.valueOf(request.getParameter("txt_id_producto"));
-                if (producto.modificar(id)>0)
+                if (producto.modificar()>0)
                 {
                     response.sendRedirect("index.jsp");
                 }
@@ -79,7 +79,7 @@ public class controlador extends HttpServlet {
             else if("eliminar_producto".equals(request.getParameter("btn_eliminar_productos")))
             {
                 int id=Integer.valueOf(request.getParameter("txt_id_producto"));
-                if (producto.eliminar(id)>0)
+                if (producto.eliminar()>0)
                 {
                     response.sendRedirect("index.jsp");
                 }

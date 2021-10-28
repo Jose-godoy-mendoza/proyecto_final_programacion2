@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.awt.HeadlessException;
@@ -20,13 +15,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Producto {
     private String producto, descripcion, imagen, fecha_ingreso;
-    private int idmarca, existencia;
+    private int id, idmarca, existencia;
     private double precio_costo, precio_venta;
     Conexion cn;
     
     public Producto(){  }
 
-    public Producto(String producto, String descripcion, String imagen, String fecha_ingreso, int idmarca, int existencia, double precio_costo, double precio_venta) {
+    public Producto(String producto, String descripcion, String imagen, String fecha_ingreso, int idmarca, int existencia, double precio_costo, double precio_venta, int id) {
         this.producto = producto;
         this.descripcion = descripcion;
         this.imagen = imagen;
@@ -35,6 +30,7 @@ public class Producto {
         this.existencia = existencia;
         this.precio_costo = precio_costo;
         this.precio_venta = precio_venta;
+        this.id = id;
     }
 
     public String getProducto() {
@@ -100,6 +96,16 @@ public class Producto {
     public void setPrecio_venta(double precio_venta) {
         this.precio_venta = precio_venta;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     
     
     public String obtener_imagen()
@@ -154,7 +160,7 @@ public class Producto {
     }
     
     
-    public int eliminar(int id)
+    public int eliminar()
     {
         int devolver=0;
         try
@@ -164,7 +170,7 @@ public class Producto {
             cn = new Conexion();
             cn.abrir_conexion();
             parametro=(PreparedStatement) cn.conexionBD.prepareStatement(codigo_sql);
-            parametro.setInt(1, id);
+            parametro.setInt(1, getId());
             
             devolver=parametro.executeUpdate();
             cn.cerrar_conexion();
@@ -177,37 +183,36 @@ public class Producto {
     } 
     
     
-   public int modificar(int id)
-    {
-        int devolver=0;
-        try
+   public int modificar() {
+        int devolver;
         {
-            String fecha= new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            PreparedStatement parametro;
-            String codigo_sql="update db_punto_venta.productos set producto=?, descripcion=?, imagen=?, fecha_ingreso=?, idmarca=?, existencia=?, precio_costo=?, precio_venta=? where idproducto=?";
-            cn = new Conexion();
-            cn.abrir_conexion();
-            parametro=(PreparedStatement) cn.conexionBD.prepareStatement(codigo_sql);
-            parametro.setString(1, getProducto());
-            parametro.setString(2, getDescripcion());
-            parametro.setString(3, "Imagenes/"+getImagen());
-            //parametro.setString(4, getFecha_ingreso());
-            parametro.setString(4, fecha);
-            parametro.setInt(5,    getIdmarca());
-            parametro.setInt(6, getExistencia());
-            parametro.setDouble(7, getPrecio_costo());
-            parametro.setDouble(8, getPrecio_venta());
-            parametro.setInt(9, id);
-            
-            devolver=parametro.executeUpdate();
-            cn.cerrar_conexion();
-        }catch(HeadlessException | SQLException ex)
-        {
-            System.out.println("error........"+ex.getMessage());
+            try {
+                String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+                PreparedStatement parametro;
+                String codigo_sql = "update productos set Producto=?,idMarca=?,Descripcion=?,Precio_costo=?,Precio_venta=?,Existencia=?, Fecha_ingreso=?  where idProducto=?;";
+                cn = new Conexion();
+                cn.abrir_conexion();
+                parametro = (PreparedStatement) cn.conexionBD.prepareStatement(codigo_sql);
+                parametro.setString(1, this.getProducto());
+                parametro.setInt(2, this.getIdmarca());
+                parametro.setString(3, this.getDescripcion());
+                parametro.setDouble(4, this.getPrecio_costo());
+                parametro.setDouble(5, this.getPrecio_venta());
+                parametro.setInt(6, this.getExistencia());
+                parametro.setString(7, fecha);
+                parametro.setInt(8, getId());
+
+                devolver = parametro.executeUpdate();
+                cn.cerrar_conexion();
+            } catch (HeadlessException | SQLException ex) {
+                System.out.println("error........" + ex.getMessage());
+                devolver = 0;
+            }
+
+            return devolver;
         }
-        
-        return devolver;
-    }  
+   }
+    
     
    
    public int agregar()
@@ -241,20 +246,17 @@ public class Producto {
         return devolver;
     }
     
-    public DefaultTableModel leer()
-    {
+   public DefaultTableModel leer() {
         DefaultTableModel tabla = new DefaultTableModel();
-        try
-        {
+        try {
             cn = new Conexion();
-            String query="Select p.idproducto as id, p.producto, p.descripcion, p.imagen, p.precio_costo, p.precio_venta, p.existencia, p.fecha_ingreso, m.marca, p.idmarca from productos as p INNER JOIN marcas as m on p.idmarca=m.idmarca ORDER BY idproducto;";
+            String query = "Select p.idproducto as id, p.producto, p.descripcion, p.imagen, p.precio_costo, p.precio_venta, p.existencia, p.fecha_ingreso, m.marca, p.idmarca,p.imagen from productos as p INNER JOIN marcas as m on p.idmarca=m.idmarca ORDER BY idproducto;";
             cn.abrir_conexion();
-            ResultSet consulta=cn.conexionBD.createStatement().executeQuery(query);
-            String encabezado[]={"id","producto","descripcion","Imagen","precio_costo","precio_venta","Existencias","Fecha ingreso","marca","id_marca"};
+            ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
+            String encabezado[] = {"id", "producto", "descripcion", "Imagen", "precio_costo", "precio_venta", "Existencias", "Fecha ingreso", "marca", "id_marca", "img"};
             tabla.setColumnIdentifiers(encabezado);
-            String datos[]= new String [10];
-            while(consulta.next())
-            {
+            String datos[] = new String[11];
+            while (consulta.next()) {
                 datos[0] = consulta.getString("id");
                 datos[1] = consulta.getString("producto");
                 datos[2] = consulta.getString("descripcion");
@@ -265,12 +267,13 @@ public class Producto {
                 datos[7] = consulta.getString("fecha_ingreso");
                 datos[8] = consulta.getString("marca");
                 datos[9] = consulta.getString("idmarca");
+                datos[10] = consulta.getString("imagen");
+
                 tabla.addRow(datos);
             }
             cn.cerrar_conexion();
-        }catch(SQLException ex)
-        {
-            System.out.println("Error:"+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("Error:" + ex.getMessage());
         }
         return tabla;
     }

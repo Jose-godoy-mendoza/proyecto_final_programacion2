@@ -164,7 +164,7 @@ Conexion cn;
 
                 String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
                 PreparedStatement parametro;
-                String query = "insert into clientes(Nombres,Apellidos,NIT,Genero,Telefono,Correo_electronico,Fecha_ingreso)values(?,?,?,?,?,?,?);";
+                String query = "insert into clientes(Nombres,Apellidos,NIT,Genero,Telefono,Correo_electronico,Fechaingreso)values(?,?,?,?,?,?,?);";
                 cn = new Conexion();
                 cn.abrir_conexion();
                 parametro = (PreparedStatement) cn.conexionBD.prepareStatement(query);

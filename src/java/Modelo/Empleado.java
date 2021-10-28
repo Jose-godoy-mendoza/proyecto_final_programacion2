@@ -120,7 +120,7 @@ public class Empleado extends Persona {
 
                 String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
                 PreparedStatement parametro;
-                String query = "insert into empleados(Nombres,Apellidos,Direccion,Telefono,DPI,Genero,Fecha_nacimiento,id_Puesto,Fecha_inicio_laborales,Fecha_ingreso)values(?,?,?,?,?,?,?,?,?,?);";
+                String query = "insert into empleados(Nombres,Apellidos,Direccion,Telefono,DPI,Genero,Fecha_nacimiento,idPuesto,Fecha_inicio_labores,Fechaingreso)values(?,?,?,?,?,?,?,?,?,?);";
                 cn = new Conexion();
                 cn.abrir_conexion();
                 parametro = (PreparedStatement) cn.conexionBD.prepareStatement(query);
@@ -197,7 +197,7 @@ public class Empleado extends Persona {
         {
             try {
                 PreparedStatement parametro;
-                String query = "update empleados set Nombres=?, Apellidos=?,Direccion=?,Telefono=?,DPI=?,Genero=?, Fecha_nacimiento=?,id_Puesto=?, Fecha_inicio_laborales=? where idEmpleado=?;";
+                String query = "update empleados set Nombres=?, Apellidos=?,Direccion=?,Telefono=?,DPI=?,Genero=?, Fecha_nacimiento=?,idPuesto=?, Fecha_inicio_labores=? where idEmpleado=?;";
                 cn = new Conexion();
                 cn.abrir_conexion();
                 parametro = (PreparedStatement) cn.conexionBD.prepareStatement(query);

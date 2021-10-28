@@ -26,7 +26,7 @@ main {
 .formula_modal{
     background: rgb(210,214,214);
     background: linear-gradient(90deg, rgba(210,214,214,1) 0%, rgba(227,237,237,0.9086937399471507) 50%, rgba(156,155,153,1) 100%);
-    opacity:0.90 !important;
+    opacity:0.85 !important;
 
     /*  
        
@@ -39,6 +39,12 @@ main {
  /*background: rgb(209,212,213);
  background: linear-gradient(30deg, rgba(209,212,213,1) 0%, rgba(163,180,181,1) 35%, rgba(8,237,246,1) 100%);
     */
+}
+
+.modal_ventana{
+    background: rgb(210,214,214);
+    background: linear-gradient(90deg, rgba(210,214,214,1) 0%, rgba(227,237,237,0.9086937399471507) 50%, rgba(156,155,153,1) 100%);
+
 }
 
 .formulario {
@@ -208,6 +214,7 @@ main {
 .formula_tabla{
     background-color:#dcdcdc;
     font-size: 17px;
+    font-weight: bold;
 }
 
 .radio_ver{
@@ -258,6 +265,7 @@ main {
 .titulos{
     font-size: 18px;
 }
+
 .enlaze_marcas{
     height: 50px;
     width: 25%; 
@@ -282,7 +290,7 @@ main {
 }
 */
 input[type="file"]{
-   -webkit-appearance: none;
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 100%;
@@ -292,6 +300,41 @@ input[type="file"]{
     cursor: text;
     padding: .25em;
     color:black;
-   font-weight: bold;
-   font-style: italic;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+.enlaze_modal{
+    height: 50px;
+    width: 49%; 
+    background:#778899;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+    border: 1px solid#778899; 	
+    border-radius:4px;
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.estilo_imagen2{
+   border: 3px solid #696969;
+  border-radius: 4px;
+  padding: 5px;
+  width:152px; 
+  height:110px;   
+}
+.estilo_imagen{
+ border: 3px solid #696969;
+  border-radius: 4px;
+  padding: 5px;
+  width:210px; 
+  height:140px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color:#fa8072;
 }
