@@ -68,33 +68,6 @@ Conexion cn;
     public Map mostrar_c()
     {
         
-        /*
-        Map<String, ArrayList<String>> drop_cliente = new HashMap();
-        try
-        {
-            //String codigo_sql="select idcliente as id, nombres, nit from clientes;";
-            String codigo_sql="select idcliente as id, nombres, nit from clientes;";
-            //List<String> valores = new ArrayList<String>();
-            
-            cn = new Conexion();
-            cn.abrir_conexion();
-            ResultSet consulta= cn.conexionBD.createStatement().executeQuery(codigo_sql);
-            while(consulta.next())
-            {
-                //drop_cliente.put(consulta.getString("id"), new String[]{consulta.getString("nombres"), consulta.getString("nit")});
-                ArrayList<String> prueba = new ArrayList();
-                prueba.add(consulta.getString("nombres"));
-                prueba.add(consulta.getString("nit"));
-                drop_cliente.put(consulta.getString("id"), prueba);
-                
-            }
-            
-            cn.cerrar_conexion();
-        }catch(Exception ex)
-        {
-            
-        }
-        */
         
         Map<String, List<String>> drop_cliente = new HashMap<String, List<String>>();
         try
@@ -126,6 +99,39 @@ Conexion cn;
         return drop_cliente;
     }
     
+    public HashMap seleccionar2() {
+        HashMap<String, String> drop = new HashMap();
+        try {
+            cn = new Conexion();
+            String query = ("select idCliente as id, Nombres,Apellidos from clientes;");
+            cn.abrir_conexion();
+            ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
+            while (consulta.next()) {
+                drop.put(consulta.getString("id"), consulta.getString("Nombres") + " " + consulta.getString("Apellidos"));
+            }
+            cn.cerrar_conexion();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return drop;
+    }
+    
+    public HashMap seleccionar() {
+        HashMap<String, String> drop = new HashMap();
+        try {
+            cn = new Conexion();
+            String query = ("select idCliente as id, Nombres,Apellidos,NIT from clientes;");
+            cn.abrir_conexion();
+            ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
+            while (consulta.next()) {
+                drop.put(consulta.getString("id"), consulta.getString("Nombres") + " " + consulta.getString("Apellidos") + ", " + consulta.getString("NIT"));
+            }
+            cn.cerrar_conexion();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return drop;
+    }
     
     public HashMap mostrar_clientes()
     {

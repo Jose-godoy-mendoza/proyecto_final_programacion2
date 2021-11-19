@@ -68,6 +68,10 @@
         <servlet-name>controlador_compras2</servlet-name>
         <servlet-class>Controlador.controlador_compras2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ser_ventas</servlet-name>
+        <servlet-class>Controlador.ser_ventas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlador</servlet-name>
         <url-pattern>/controlador</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>controlador_compras2</servlet-name>
         <url-pattern>/controlador_compras2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ser_ventas</servlet-name>
+        <url-pattern>/ser_ventas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

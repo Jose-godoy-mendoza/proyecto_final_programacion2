@@ -190,6 +190,40 @@ public class Empleado extends Persona {
         return tabla;
     }
 
+    public HashMap seleccionar2(){
+        HashMap <String, String> drop = new HashMap();
+    try{
+        cn = new Conexion();
+        String query=("select idEmpleado as id, m.Nombres, m.Apellidos  from empleados as m, puestos as P where m.idPuesto=P.Idpuesto;");
+        cn.abrir_conexion();
+        ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
+        while(consulta.next()){
+            drop.put(consulta.getString("id"), consulta.getString("Nombres")+" "+consulta.getString("Apellidos") );
+        }
+        cn.cerrar_conexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+        return drop;
+    }
+    
+    public HashMap seleccionar(){
+        HashMap <String, String> drop = new HashMap();
+    try{
+        cn = new Conexion();
+        String query=("select idEmpleado as id, m.Nombres, m.Apellidos,P.Puesto from empleados as m, puestos as P where m.idPuesto=P.Idpuesto;");
+        cn.abrir_conexion();
+        ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
+        while(consulta.next()){
+            drop.put(consulta.getString("id"), consulta.getString("Nombres")+" "+consulta.getString("Apellidos")+", "+consulta.getString("Puesto"));
+        }
+        cn.cerrar_conexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+        return drop;
+    }
+    
     @Override
     public int modificar() {
         int retorno;

@@ -387,6 +387,33 @@ public class Ventas_Detalle {
         return devolver;
     }  
     
+    public DefaultTableModel Mostrar() {
+        DefaultTableModel tabla = new DefaultTableModel();
+        try {
+            cn = new Conexion();
+            cn.abrir_conexion();
+            String query = "select idVenta_detalle as id, m.idVenta,P.producto, m.Cantidad, m.Precio_unitario, P.Idproducto from ventas_detalle as m, productos as P where m.idProducto=P.idProducto order by idVenta_detalle ;";
+            ResultSet consulta = cn.conexionBD.createStatement().executeQuery(query);
+            String encabezado[] = {"Id", "Venta", "Cantidad", "precio", "producto", "idproducto"};
+            tabla.setColumnIdentifiers(encabezado);
+            String datos[] = new String[6];
+            while (consulta.next()) {
+                datos[0] = consulta.getString("id");
+                datos[1] = consulta.getString("idVenta");
+                datos[2] = consulta.getString("producto");
+                datos[3] = consulta.getString("Cantidad");
+                datos[4] = consulta.getString("Precio_unitario");
+                datos[5] = consulta.getString("Idproducto");
+
+                tabla.addRow(datos);
+            }
+            cn.cerrar_conexion();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return tabla;
+    }
     
     public int modificar()
     {
@@ -482,152 +509,3 @@ public class Ventas_Detalle {
     }
     
 }
-/*
-    public int modificando_cantidad()
-    {
-        int retorno=0, cantidad_de_ventas=0, cantidad_reducir=0, nuevaCantidad=0;
-        cantidad_de_ventas=cantidad_de_ventasdetalle();
-        cantidad_reducir=getCantidad();
-        
-        if(cantidad_de_ventas>cantidad_reducir)
-        {
-            nuevaCantidad=cantidad_de_ventas-cantidad_reducir;
-            try
-            {
-                cn=new Conexion();
-                String consulta="update productos set existencia=existencia+? where idproducto=?";
-                cn.abrir_conexion();
-                PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(consulta);
-                parametro.setInt(1, nuevaCantidad);
-                parametro.setInt(2, getIdproducto());
-
-                retorno=parametro.executeUpdate();
-                cn.cerrar_conexion();
-            }catch(Exception ex)
-            {
-
-            }
-        }
-        else if(cantidad_de_ventas<cantidad_reducir)
-        {
-            nuevaCantidad=cantidad_reducir - cantidad_de_ventas;
-            try
-            {
-                cn=new Conexion();
-                String consulta="update productos set existencia=existencia-? where idproducto=?";
-                cn.abrir_conexion();
-                PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(consulta);
-                parametro.setInt(1, nuevaCantidad);
-                parametro.setInt(2, getIdproducto());
-
-                retorno=parametro.executeUpdate();
-                cn.cerrar_conexion();
-            }catch(Exception ex)
-            {
-
-            }
-            
-        }
-        else
-        {
-            retorno=1;
-        }
-        
-        return retorno;
-    }
-*/
-
-
-
-
-
-/*
-        public int modificando_cantidad()
-    {
-        int retorno=0, cantidad_de_ventas=0, cantidad_reducir=0, nuevaCantidad=0, nuevo_idprod=0, antiguo_idprod=0,validar_existencias=0;
-        validar_existencias=obtener_cantidad(); //con este obtengo las existencias de la tabla productos
-        antiguo_idprod=idprod_de_ventasdetalle();
-        nuevo_idprod=getIdproducto();
-        cantidad_de_ventas=cantidad_de_ventasdetalle(); //con este obtengo la cantidad de la tabla ventas detalle
-        cantidad_reducir=getCantidad(); //con este obtengo la cantidad ingresada en la JSP
-        
-        
-        if(validar_existencias>cantidad_reducir) //aqui está el error   if(validar_existencias>cantidad_de_ventas)
-        {
-            if(antiguo_idprod==nuevo_idprod)
-            {
-                if(cantidad_de_ventas>cantidad_reducir)
-                {
-                    nuevaCantidad=cantidad_de_ventas-cantidad_reducir;
-                    try
-                    {
-                        cn=new Conexion();
-                        String consulta="update productos set existencia=existencia+? where idproducto=?";
-                        cn.abrir_conexion();
-                        PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(consulta);
-                        parametro.setInt(1, nuevaCantidad);
-                        parametro.setInt(2, getIdproducto());
-
-                        retorno=parametro.executeUpdate();
-                        cn.cerrar_conexion();
-                    }catch(Exception ex)
-                    {
-
-                    }
-                }
-                else if(cantidad_de_ventas<cantidad_reducir)
-                {
-                    nuevaCantidad=cantidad_reducir - cantidad_de_ventas;
-                    try
-                    {
-                        cn=new Conexion();
-                        String consulta="update productos set existencia=existencia-? where idproducto=?";
-                        cn.abrir_conexion();
-                        PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(consulta);
-                        parametro.setInt(1, nuevaCantidad);
-                        parametro.setInt(2, getIdproducto());
-
-                        retorno=parametro.executeUpdate();
-                        cn.cerrar_conexion();
-                    }catch(Exception ex)
-                    {
-
-                    }
-
-                }
-                else
-                {
-                    retorno=1;
-                }
-            }
-            else
-            {
-                try
-                {
-                    modificacion_antiguoidprod(cantidad_de_ventas);
-
-                    cn=new Conexion();
-                    String consulta="update productos set existencia=existencia-? where idproducto=?";
-                    cn.abrir_conexion();
-                    PreparedStatement parametro= (PreparedStatement) cn.conexionBD.prepareStatement(consulta);
-                    parametro.setInt(1, cantidad_reducir);
-                    parametro.setInt(2, nuevo_idprod);
-                    retorno=parametro.executeUpdate();
-                    cn.cerrar_conexion();
-                }catch(Exception ex)
-                {
-
-                }
-            }
-        }
-        else if(cantidad_de_ventas==cantidad_reducir)
-        {
-            retorno=1;
-        }
-        else
-        {
-            retorno=0;
-        }
-        return retorno;
-    }
-*/
